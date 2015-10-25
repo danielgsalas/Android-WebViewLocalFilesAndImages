@@ -1,0 +1,25 @@
+
+.svgButton
+{
+	display: block;
+	height: 60px
+}
+
+.svgButtonBackground
+{
+	fill: black
+}
+
+.svgButtonText
+{
+	fill: white;
+	font-family: script, cursive, fantasy;
+	font-size: 20
+}
+
+.websiteStyle
+{
+	/* same color as text background on http://www.tournamentofthephoenix.com/ */	
+	background-color: #F8CD8E;
+	font-family: script, cursive, fantasy
+}
