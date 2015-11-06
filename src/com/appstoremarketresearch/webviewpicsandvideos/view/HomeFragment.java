@@ -1,13 +1,18 @@
 package com.appstoremarketresearch.webviewpicsandvideos.view;
 
+import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 
 import com.appstoremarketresearch.webviewpicsandvideos.R;
+import com.appstoremarketresearch.webviewpicsandvideos.controller.InfoActivity;
+import com.appstoremarketresearch.webviewpicsandvideos.controller.MediaActivity;
 
 public class HomeFragment extends Fragment
 {
@@ -32,6 +37,33 @@ public class HomeFragment extends Fragment
     private void initializeWebView(View topLevelView)
     {
         WebView webview = (WebView) topLevelView.findViewById(R.id.webview);
+        webview.getSettings().setJavaScriptEnabled(true);        
+        webview.addJavascriptInterface(new JavaScriptInterface(), "android");
         webview.loadUrl("file:///android_asset/html/Home.html");
+    }
+    
+    /**
+     * Java-JavaScript bridge
+     */
+    final class JavaScriptInterface
+    {
+        @JavascriptInterface
+        public void requestPage(String pagename)
+        {
+            android.util.Log.w(this.getClass().getSimpleName(), "pagename=" + pagename);
+            
+            Activity activity = getActivity();
+            
+            if ("Info".equals(pagename))
+            {
+                Intent intent = new Intent(activity, InfoActivity.class);
+                activity.startActivity(intent);
+            }
+            else if ("Media".equals(pagename))
+            {
+                Intent intent = new Intent(activity, MediaActivity.class);                
+                activity.startActivity(intent);
+            }
+        }
     }
 }
