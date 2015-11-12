@@ -2,18 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="horizontal" >
     
-    <!-- configured height=0 in vertical orientation -->
-
+    <!-- configured width=0 in horizontal orientation -->
+    
     <WebView android:id="@+id/media_preview"
-        android:layout_width="match_parent"
-        android:layout_height="0px"
+        android:layout_width="0px"
+        android:layout_height="match_parent"
         android:layout_weight="1" />
     
     <WebView android:id="@+id/media_content"
-        android:layout_width="match_parent"
-        android:layout_height="0px"
+        android:layout_width="0px"
+        android:layout_height="match_parent"
         android:layout_weight="1" />
     
 </LinearLayout>
