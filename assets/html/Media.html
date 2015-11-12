@@ -18,9 +18,20 @@
 <img border="2" height="56" width="100" src="../img/preview_orbweaverspider.jpg" onclick="showImage('orbweaverspider')" />
 
 <h3 id="selectedImageTitle" ></h3>
-<canvas id="fullSizeImage" height="168" width="300" style="display:none"></canvas>
+<div id="tapInstructions" style="display:none">(tap to zoom)</div>
+<canvas id="fullSizeImage" height="168" width="300" style="display:none" onclick="zoomImage()"></canvas>
     
 <script>
+
+var gCanvasContext = null;
+var gImage = null;
+var gImageName = null;
+var gZoomedIn = false;
+
+var gImageFullWidth = 300;
+var gImageFullHeight = 168;
+var gImageX = 0;
+var gImageY = 0;
 
 var imageTitles = {
 	"crabs" : "Red Crabs on the Beach",
@@ -29,36 +40,92 @@ var imageTitles = {
 	"coyote" : "Coyote on the Roadside",
 	"ducks" : "Ducks on a Drying Lake",
 	"geese" : "Geese on a Lake",
-	"hawknest" : "Hawks Nest in a Tree",
+	"hawknest" : "Hawks Overlooking a Nest in a Tree",
 	"lizards_on_wall" : "Lizards on My Outside Wall",
 	"mantis_on_tire" : "Praying Mantis on My Truck Tire",
 	"mantis_on_wall" : "Praying Mantis inside My House",
 	"orbweaverspider" : "Orb Weaver Spider with Web Blocking Path to My House"
 };
 
+// start clipping from left side of image
+var imageClipX = {
+	"crabs" : 1250,
+	"babylizard" : 750,
+	"blackwidow" : 1250,
+	"coyote" : 1600,
+	"ducks" : 500,
+	"geese" : 1000,
+	"hawknest" : 1250,
+	"lizards_on_wall" : 2000,
+	"mantis_on_tire" : 1000,
+	"mantis_on_wall" : 750,
+	"orbweaverspider" : 1000
+};
+
+// start clipping from top of image
+var imageClipY = {
+	"crabs" : 350,
+	"babylizard" : 750,
+	"blackwidow" : 750,
+	"coyote" : 350,
+	"ducks" : 500,
+	"geese" : 700,
+	"hawknest" : 650,
+    "lizards_on_wall" : 500,
+	"mantis_on_tire" : 750,
+	"mantis_on_wall" : 500,
+	"orbweaverspider" : 750
+};
+
 var showImage = function(imageName) {
 	
-	// prepare the canvas
-	var canvas = document.getElementById("fullSizeImage");
-	canvas.setAttribute("style", "");	
-	var context = canvas.getContext("2d");
+	// set global values
+	gImageName = imageName;
+	gZoomedIn = false
+	
+	// prepare the canvas context
+	if (gCanvasContext == null) {
+		var canvas = document.getElementById("fullSizeImage");
+	    canvas.setAttribute("style", "");
+	    gCanvasContext = canvas.getContext("2d");
+	}	
 	
 	// load the image
-	var image = new Image();
-	image.src = "../img/" + imageName + ".jpg";
+	gImage = new Image();
+	gImage.src = "../img/" + gImageName + ".jpg";
 	
 	// when loaded, draw the image on the canvas
-	image.onload = function() {
-		var x = 0;
-		var y = 0;
-		var width = 300;
-		var height = 168;
-		context.drawImage(image, x, y, width, height);
+	gImage.onload = function() {
+		gCanvasContext.drawImage(gImage, gImageX, gImageY, gImageFullWidth, gImageFullHeight);
 	}
 	
 	// show the image title
 	var selectedImageTitle = document.getElementById("selectedImageTitle");
-	selectedImageTitle.innerHTML = imageTitles[imageName];
+	selectedImageTitle.innerHTML = imageTitles[gImageName];
+	
+	// show zoom instructions
+	var tapInstructions = document.getElementById("tapInstructions");
+	tapInstructions.setAttribute("style", "");
+}
+
+var zoomImage = function() {
+	
+	if (gZoomedIn) {
+        gCanvasContext.drawImage(gImage, gImageX, gImageY, gImageFullWidth, gImageFullHeight);
+		gZoomedIn = false;
+	}
+	else {
+		var clipX = imageClipX[gImageName];
+		var clipY = imageClipY[gImageName];
+		var clipWidth = gImageFullWidth * 5;   // of the full-size image not the displayed image
+		var clipHeight = gImageFullHeight * 5; // of the full-size image not the displayed image
+		
+		gCanvasContext.drawImage(gImage,
+			clipX, clipY, clipWidth, clipHeight,
+		    gImageX, gImageY, gImageFullWidth, gImageFullHeight);
+		
+		gZoomedIn = true;
+	}
 }
 </script>    
 </body>
