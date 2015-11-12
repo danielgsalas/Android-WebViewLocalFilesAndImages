@@ -32,6 +32,7 @@ public class MediaFragment extends Fragment
     private void initializeWebView(View topLevelView)
     {
         WebView webview = (WebView) topLevelView.findViewById(R.id.webview);
+        webview.getSettings().setJavaScriptEnabled(true);
         webview.loadUrl("file:///android_asset/html/Media.html");        
     }
 }
