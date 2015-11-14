@@ -1,4 +1,4 @@
-package com.appstoremarketresearch.webviewpicsandvideos.view;
+package com.appstoremarketresearch.webviewlocalfilesandimages.view;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
-import com.appstoremarketresearch.webviewpicsandvideos.R;
+import com.appstoremarketresearch.webviewlocalfilesandimages.R;
 
 public class InfoFragment extends Fragment
 {

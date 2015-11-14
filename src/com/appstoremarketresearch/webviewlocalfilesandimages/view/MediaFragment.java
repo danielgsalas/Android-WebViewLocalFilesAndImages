@@ -1,4 +1,4 @@
-package com.appstoremarketresearch.webviewpicsandvideos.view;
+package com.appstoremarketresearch.webviewlocalfilesandimages.view;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 
-import com.appstoremarketresearch.webviewpicsandvideos.R;
+import com.appstoremarketresearch.webviewlocalfilesandimages.R;
 
 public class MediaFragment extends Fragment
 {
@@ -72,7 +72,6 @@ public class MediaFragment extends Fragment
             // pass the request from MediaPreview.html to MediaContent.html
             // by calling JavaScript on the Android UI thread not a background thread
             mediaContent.post(new Runnable() {
-                @Override
                 public void run() {
                     mediaContent.loadUrl("javascript:showImage('" + imageName + "')");
                 }

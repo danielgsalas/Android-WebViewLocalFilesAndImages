@@ -1,10 +1,10 @@
-package com.appstoremarketresearch.webviewpicsandvideos.controller;
+package com.appstoremarketresearch.webviewlocalfilesandimages.controller;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 
-import com.appstoremarketresearch.webviewpicsandvideos.R;
+import com.appstoremarketresearch.webviewlocalfilesandimages.R;
 
 public class MediaActivity extends Activity
 {

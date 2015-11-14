@@ -1,4 +1,4 @@
-package com.appstoremarketresearch.webviewpicsandvideos.view;
+package com.appstoremarketresearch.webviewlocalfilesandimages.view;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 
-import com.appstoremarketresearch.webviewpicsandvideos.R;
-import com.appstoremarketresearch.webviewpicsandvideos.controller.InfoActivity;
-import com.appstoremarketresearch.webviewpicsandvideos.controller.MediaActivity;
+import com.appstoremarketresearch.webviewlocalfilesandimages.controller.InfoActivity;
+import com.appstoremarketresearch.webviewlocalfilesandimages.controller.MediaActivity;
+import com.appstoremarketresearch.webviewlocalfilesandimages.R;
 
 public class HomeFragment extends Fragment
 {
