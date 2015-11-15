@@ -1,24 +1,19 @@
 
-.svgButton
-{
+.linearGradient {
+	background: linear-gradient(lightblue, blue);
+}
+
+.svgButton {
 	display: block;
 	height: 60px
 }
 
-.svgButtonBackground
-{
+.svgButtonBackground {
 	fill: black
 }
 
-.svgButtonText
-{
+.svgButtonText {
 	fill: white;
 	font-family: script, cursive, fantasy;
 	font-size: 20
-}
-
-.websiteStyle
-{
-	background-color: #F3E2A9;
-	font-family: script, cursive, fantasy
 }
