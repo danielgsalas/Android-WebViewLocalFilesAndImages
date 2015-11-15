@@ -38,14 +38,14 @@ public class HomeFragment extends Fragment
     {
         WebView webview = (WebView) topLevelView.findViewById(R.id.webview);
         webview.getSettings().setJavaScriptEnabled(true);        
-        webview.addJavascriptInterface(new JavaScriptInterface(), "android");
+        webview.addJavascriptInterface(new JSInterface(), "android");
         webview.loadUrl("file:///android_asset/html/Home.html");
     }
     
     /**
      * Java-JavaScript bridge
      */
-    final class JavaScriptInterface
+    final class JSInterface
     {
         @JavascriptInterface
         public void requestPage(String pagename)
