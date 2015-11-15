@@ -38,7 +38,7 @@ public class MediaFragment extends Fragment
         WebView mediaContent = (WebView) topLevelView.findViewById(R.id.media_content);
         mediaContent.getSettings().setJavaScriptEnabled(true);
 
-        JavaScriptInterface jsi = new JavaScriptInterface(mediaPreview, mediaContent);
+        JSInterface jsi = new JSInterface(mediaContent);
         mediaPreview.addJavascriptInterface(jsi, "android");
         mediaContent.addJavascriptInterface(jsi, "android");
 
@@ -49,16 +49,12 @@ public class MediaFragment extends Fragment
     /**
      * Java-JavaScript bridge
      */
-    final class JavaScriptInterface
+    final class JSInterface
     {
-        private WebView mediaPreview;
         private WebView mediaContent;
         
-        public JavaScriptInterface(
-            WebView mediaPreview, 
-            WebView mediaContent) 
+        public JSInterface(WebView mediaContent) 
         {
-            this.mediaPreview = mediaPreview;
             this.mediaContent = mediaContent;
         }
         
