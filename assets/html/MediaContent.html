@@ -2,11 +2,11 @@
 <head>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
-<body>
+<body class="linearGradient">
 
 <h3 id="selectedImageTitle" ></h3>
 <div id="tapInstructions" style="display:none">(tap to zoom)</div>
-<canvas id="fullSizeImage" height="168" width="300" style="display:none" onclick="zoomImage()"></canvas>
+<canvas id="fullSizeImage" height="246" width="440" style="display:none" onclick="zoomImage()"></canvas>
 
 <script>
 
@@ -15,8 +15,8 @@ var gImage = null;
 var gImageName = null;
 var gZoomedIn = false;
 
-var gCanvasWidth = 300;
-var gCanvasHeight = 168;
+var gCanvasWidth = 440;
+var gCanvasHeight = 246;
 var gImageX = 0;
 var gImageY = 0;
 
@@ -105,10 +105,10 @@ var zoomImage = function() {
         gZoomedIn = false;
     }
     else {
-        var clipX = imageClipX[gImageName];
-        var clipY = imageClipY[gImageName];
-        var clipWidth = gCanvasWidth * 5;   // of the full-size image not the displayed image
-        var clipHeight = gCanvasHeight * 5; // of the full-size image not the displayed image
+        var clipX = imageClipX[gImageName]; // start clipX from left side of image
+        var clipY = imageClipY[gImageName]; // start clipY from top of image
+        var clipWidth = gCanvasWidth * 5;   // portion of the full-size image not the canvas
+        var clipHeight = gCanvasHeight * 5; // portion of the full-size image not the canvas
         
         gCanvasContext.drawImage(gImage,
             clipX, clipY, clipWidth, clipHeight,
